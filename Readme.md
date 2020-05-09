@@ -1,4 +1,4 @@
-## Steps for setup
+## Instructions for setup
 
 Start Zookeeper & Kafka Server on 2 separate terminals :
 
@@ -23,14 +23,14 @@ To submit the Spark job, run :
 ```
 spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] --conf spark.ui.port=3000 data_stream.py
 ```
-
-## Effect of SparkSession property parameters on throughput and latency of data
+## Solution for Step 3
+## Part 1 - Effect of SparkSession property parameters on throughput and latency of data
 
 The parameter `processedRowsPerSecond` directly affects the throughput. Increasing or decreasing this value will proportionately affect the throughput.
 
-## Most efficient SparkSession property key-value pairs 
+## Part 2 - Most efficient SparkSession property key-value pairs 
 
 In order to optimize the parameter `processedRowsPerSecond`, the following key value pairs were found optimal :
-* `spark.default.parallelism` : 500
+* `spark.default.parallelism` : 100
 * `spark.streaming.kafka.maxRatePerPartition` : 100
 * `spark.sql.shuffle.partitions` : 100
